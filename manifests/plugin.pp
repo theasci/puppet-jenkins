@@ -34,16 +34,26 @@ define jenkins::plugin(
   $group           = undef,
   $create_user     = undef,
 ) {
-  validate_string($version)
+  if ( $version != undef ){
+    validate_string($version)
+  }
   validate_bool($manage_config)
-  validate_string($config_filename)
-  validate_string($config_content)
-  validate_string($update_url)
+  if ( $config_filename != undef ){
+    validate_string($config_filename)
+  }
+  if ( $config_content != undef ){
+    validate_string($config_content)
+  }
+  if ( $update_url != undef ){
+    validate_string($update_url)
+  }
   validate_bool($enabled)
   if ( $source != undef ){
     validate_string($source)
   }
-  validate_string($digest_string)
+  if ( $digest_string != undef ){
+    validate_string($digest_string)
+  }
   validate_string($digest_type)
   validate_bool($pin)
 
