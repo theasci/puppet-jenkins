@@ -317,21 +317,32 @@ class jenkins(
   validate_bool($lts)
   validate_bool($repo)
   validate_string($package_name)
-  validate_string($direct_download)
+  if ( $direct_download != undef ){
+    validate_string($direct_download)
+  }
   validate_absolute_path($package_cache_dir)
-  validate_string($package_provider)
+  if ( $package_provider != undef ){
+    validate_string($package_provider)
+  }
   validate_bool($manage_service)
   validate_bool($service_enable)
   validate_re($service_ensure, '^running$|^stopped$')
-  validate_string($service_provider)
+  if ( $service_provider != undef ){
+    validate_string($service_provider)
+  }
   validate_hash($config_hash)
   validate_hash($plugin_hash)
   validate_hash($job_hash)
   validate_hash($user_hash)
   validate_bool($configure_firewall)
   validate_bool($install_java)
-  validate_string($repo_proxy)
-  validate_string($proxy_host)
+
+  if ( $repo_proxy != undef ){
+    validate_string($repo_proxy)
+  }
+  if ( $proxy_host != undef ){
+    validate_string($proxy_host)
+  }
   if $proxy_port { validate_integer($proxy_port) }
   if $no_proxy_list { validate_array($no_proxy_list) }
   validate_bool($cli)
