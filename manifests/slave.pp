@@ -135,13 +135,27 @@ class jenkins::slave (
   $swarm_client_args         = undef,
   $delete_existing_clients   = false,
 ) inherits jenkins::params {
-  validate_string($slave_name)
-  validate_string($description)
-  validate_string($masterurl)
-  validate_string($autodiscoveryaddress)
-  validate_string($ui_user)
-  validate_string($ui_pass)
-  validate_string($version)
+  if ( $slave_name != undef ){
+    validate_string($slave_name)
+  }
+  if ( $description != undef ){
+    validate_string($description)
+  }
+  if ( $masterurl != undef ){
+    validate_string($masterurl)
+  }
+  if ( $autodiscoveryaddress != undef ){
+    validate_string($autodiscoveryaddress)
+  }
+  if ( $ui_user != undef ){
+    validate_string($ui_user)
+  }
+  if ( $ui_pass != undef ){
+    validate_string($ui_pass)
+  }
+  if ( $version != undef ){
+    validate_string($version)
+  }
   validate_integer($executors)
   validate_bool($manage_slave_user)
   validate_string($slave_user)
