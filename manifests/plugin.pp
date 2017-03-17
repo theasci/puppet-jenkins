@@ -40,7 +40,9 @@ define jenkins::plugin(
   validate_string($config_content)
   validate_string($update_url)
   validate_bool($enabled)
-  validate_string($source)
+  if ( $source != undef ){
+    validate_string($source)
+  }
   validate_string($digest_string)
   validate_string($digest_type)
   validate_bool($pin)
