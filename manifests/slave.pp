@@ -96,8 +96,10 @@ class jenkins::slave (
   $source                   = undef,
 ) inherits jenkins::params {
 
-  validate_string($tool_locations)
-
+  if ( $source != undef ) {
+    validate_string($tool_locations)
+  }
+  
   $client_jar = "swarm-client-${version}-jar-with-dependencies.jar"
   $client_url = $source ? {
     undef   => "http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/${version}/",

@@ -36,7 +36,9 @@ define jenkins::plugin(
   validate_bool($manage_config)
   validate_bool($enabled)
   # TODO: validate_str($update_url)
-  validate_string($source)
+  if ( $source != undef ) {
+    validate_string($source)
+  }
   validate_string($digest_string)
   validate_string($digest_type)
 

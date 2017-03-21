@@ -19,8 +19,10 @@
 class jenkins::security (
   $security_model = undef,
 ){
-  validate_string($security_model)
-
+  if ( $source != undef ) {
+    validate_string($security_model)
+  }
+  
   include ::jenkins::cli_helper
 
   Class['jenkins::cli_helper'] ->
